@@ -21,7 +21,7 @@ def pievienot(dati):
     conn = sqlite3.connect('dati.db')
     c = conn.cursor()
     c.execute('''
-    INSER INTO rezultati (vards, klikski, laiks, datums)
+    INSERT INTO rezultati (vards, klikski, laiks, datums)
     VALUES (?, ?, ?, ?)
     ''', (dati['vards'], dati['klikski'], dati['laiks'], dati['datums']))
     conn.commit()
