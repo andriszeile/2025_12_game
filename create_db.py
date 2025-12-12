@@ -4,10 +4,10 @@ import sqlite3
 conn = sqlite3.connect('dati.db')
 c = conn.cursor()
 
-#izveido tabulu rezultātiem
+#izveido tabulu rezultātiem, labots tabula tops uz rezultati, un astlega auto...
 c.execute('''
-CREATE TABLE IF NOT EXISTS tops (
-          id INTEGER PRIMARY KEY AUTOINCREAMENT,
+CREATE TABLE IF NOT EXISTS rezultati (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
           vards TEXT NOT NULL,
           klikski INTEGER NOT NULL,
           laiks INTEGER NOT NULL,
