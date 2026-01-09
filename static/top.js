@@ -13,25 +13,29 @@ let datumsVirkne = datums.getDate()+'.'+datums.getMonth()+'.'+datums.getFullYear
 async function iegutDatusNoApi(url) {
     let response = await fetch(url);
     if(!response.ok) {
-        throw new Error('HTTP kļūda! Statuss: ${response.status}');
+        throw new Error(`HTTP kļūda! Statuss: ${response.status}`);
     }
     return await response.json();
 }
 
 async function atlasitTop() {
-    let topJson = await iegutDatusNoApi('/topData');
-    console.log('Top dati:', topJson);
-    let tabula = document.querySelector('.tops');
-    topJson.array.forEach(ieraksts => {
-        tabula.innerHTML += `
-        <tr>
-        <td>${ieraksts.vards}</td>
-        <td>${ieraksts.kliksi}</td>
-        <td>${ieraksts.laiks}</td>
-        <td>${ieraksts.datums}</td>
-        </tr>`;
-        
-    });
-} catch (kluda) {console.error("Kluda iegustot top datus", kluda)};
+    try {
+        let topJson = await iegutDatusNoApi('/topData');
+        console.log('Top dati:', topJson);
+        let tabula = document.querySelector('.tops');
+        topJson.array.forEach(ieraksts => {
+            tabula.innerHTML += `
+            <tr>
+            <td>${ieraksts.vards}</td>
+            <td>${ieraksts.kliksi}</td>
+            <td>${ieraksts.laiks}</td>
+            <td>${ieraksts.datums}</td>
+            </tr>`;
+            
+        });
+} catch (kluda) 
+{
+    console.error("Kluda iegustot top datus", kluda);
+
 }
 }
