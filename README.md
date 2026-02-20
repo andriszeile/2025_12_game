@@ -6,4 +6,4 @@
 #102 . -> pirms textContent
 
 #app.py
-#44 trūks return
+#44 trūkst return
